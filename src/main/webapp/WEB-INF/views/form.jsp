@@ -7,11 +7,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-<style type="text/css">
-    .div1{
-        display:inline-flex;
-    }
-</style>
+    <style type="text/css">
+        .div1 {
+            display: inline-flex;
+        }
+    </style>
 
     <title></title>
 </head>
@@ -24,27 +24,34 @@
     <div class="div1">
         <form action="/getNoticeData" method="get">
             <div class="form-group">
-                <label>게시판 제목 get방식</label>
+                <label>게시판 제목 [get 방식]</label>
                 <input name="title" type="text" class="form-control"/>
             </div>
             <div class="form-group">
                 <label>게시판 내용</label>
                 <textarea name="contents" class="form-control" style="height: 500px"/></textarea>
+            </div>
+            <div class="form-group">
+                <label>작성자</label>
+                <input name="author" type="text" class="form-control"/>
             </div>
             <button type="submit" class="btn btn-primary">전송</button>
             <button type="reset" class="btn btn-primary">취소</button>
         </form>
     </div>
     <div class="div1">
-        post 방식
         <form action="/postNoticeData" method="post">
             <div class="form-group">
-                <label>게시판 제목 post 방식</label>
+                <label>게시판 제목 [post 방식]</label>
                 <input name="title" type="text" class="form-control"/>
             </div>
             <div class="form-group">
                 <label>게시판 내용</label>
                 <textarea name="contents" class="form-control" style="height: 500px"/></textarea>
+            </div>
+            <div class="form-group">
+                <label>작성자</label>
+                <input name="author" type="text" class="form-control"/>
             </div>
             <button type="submit" class="btn btn-primary">전송</button>
             <button type="reset" class="btn btn-primary">취소</button>

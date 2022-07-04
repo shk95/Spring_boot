@@ -33,12 +33,15 @@ public class NoticeController {
         log.info(this.getClass().getName() + " .getNoticeData Start !!");
         String title = CmmUtil.nvl(request.getParameter("title"));
         String contents = CmmUtil.nvl(request.getParameter("contents"));
+        String author = CmmUtil.nvl(request.getParameter("author"));
 
         log.info("title : " + title);
         log.info("content : " + contents);
+        log.info("author : " + author);
 
         model.addAttribute("title", title);
         model.addAttribute("contents", contents);
+        model.addAttribute("author", author);
 
         log.info(this.getClass().getName() + " .getNoticeData End !!");
         return "getNoticeData";
@@ -48,12 +51,17 @@ public class NoticeController {
         log.info(this.getClass().getName() + " .postNoticeData Start !!");
         String title = CmmUtil.nvl(request.getParameter("title"));
         String contents = CmmUtil.nvl(request.getParameter("contents"));
+        String author = CmmUtil.nvl(request.getParameter("author"));
 
         log.info("title : " + title);
         log.info("content : " + contents);
+        log.info("author : " + author);
+
 
         model.addAttribute("title", title);
         model.addAttribute("contents", contents);
+        model.addAttribute("author", author);
+
 
         log.info(this.getClass().getName() + " .postNoticeData End !!");
         return "postNoticeData";

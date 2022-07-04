@@ -3,6 +3,7 @@
 <%
     String title = CmmUtil.nvl(request.getParameter("title"));
     String contents = CmmUtil.nvl(request.getParameter("contents"));
+    String author = CmmUtil.nvl(request.getParameter("author"));
 %>
 <!DOCTYPE html>
 <html>
@@ -25,6 +26,10 @@
 <div class="form-group">
     <label>java로 부터 받은 게시판 내용</label>
     <textarea name="contents" class="form-control" style="height: 500px" placeholder="<%=contents%>"/></textarea>
+</div>
+<div class="form-group">
+    <label>java로 부터 받은 작성자 내용</label>
+    <input name="author" class="form-control" value="<%=author%>"/>
 </div>
 
 <!-- Optional JavaScript -->
