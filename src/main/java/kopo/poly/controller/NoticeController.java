@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServlet;
@@ -41,5 +42,20 @@ public class NoticeController {
 
         log.info(this.getClass().getName() + " .getNoticeData End !!");
         return "getNoticeData";
+    }
+    @PostMapping (value = "postNoticeData")
+    public String PostNoticeData (HttpServletRequest request, Model model) throws Exception{
+        log.info(this.getClass().getName() + " .postNoticeData Start !!");
+        String title = CmmUtil.nvl(request.getParameter("title"));
+        String contents = CmmUtil.nvl(request.getParameter("contents"));
+
+        log.info("title : " + title);
+        log.info("content : " + contents);
+
+        model.addAttribute("title", title);
+        model.addAttribute("contents", contents);
+
+        log.info(this.getClass().getName() + " .postNoticeData End !!");
+        return "postNoticeData";
     }
 }

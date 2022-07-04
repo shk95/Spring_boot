@@ -16,11 +16,11 @@
 </head>
 <body class="container">
 <div class="jumbotron">
-    <h1>JAVA에서 받은 데이터 출력</h1>
+    <h1>JAVA에서 받은 데이터 출력(get)</h1>
 </div>
 <div class="form-group">
     <label>java로 부터 받은 게시판 제목</label>
-    <input name="title" type="text" class="form-control" value = "<%=title%>"/>
+    <input name="title" type="text" class="form-control" value = "<%=title%>"/><%-- [ jsp 에 출력하기 <%= 을 사용 ]--%>
 </div>
 <div class="form-group">
     <label>java로 부터 받은 게시판 내용</label>
