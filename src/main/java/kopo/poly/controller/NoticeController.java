@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.List;
 
 @Slf4j
 @Controller
@@ -76,7 +78,7 @@ public class NoticeController {
     private INoticeService noticeService;
 
     @RequestMapping(value = "getInsertNotice")
-    public String getInsertNotice(HttpServletRequest request, Model model) throws Exception{
+    public String getInsertNotice(HttpServletRequest request, Model model) throws Exception {
         log.info(this.getClass().getName() + " .getNoticeData Start!!");
         String reg_id = CmmUtil.nvl(request.getParameter("reg_id"));
         String title = CmmUtil.nvl(request.getParameter("title"));
@@ -106,5 +108,21 @@ public class NoticeController {
 
         log.info(this.getClass().getName() + " .getNoticeData End!!");
         return "redirect";
+    }
+
+    @RequestMapping(value = "getNoticeList")
+    public String getNoticeList(HttpServletRequest request, Model model)throws Exception{
+        log.info(this.getClass().getName() + " .getNoticeList Start !!");
+
+        List<NoticeDTO> rList = noticeService.getNoticeList();
+        log.info(String.valueOf(rList.size()));
+        if (rList == null) {
+            rList = new ArrayList<>();
+        }
+        model.addAttribute("rList", rList);
+
+        log.info(this.getClass().getName() + " .getNoticeList End !!");
+
+        return "NoticeList";
     }
 }
