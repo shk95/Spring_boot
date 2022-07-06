@@ -111,7 +111,7 @@ public class NoticeController {
     }
 
     @RequestMapping(value = "getNoticeList")
-    public String getNoticeList(HttpServletRequest request, Model model)throws Exception{
+    public String getNoticeList(HttpServletRequest request, Model model) throws Exception {
         log.info(this.getClass().getName() + " .getNoticeList Start !!");
         /*String reg_id = CmmUtil.nvl(request.getParameter("reg_id"));
         String title = CmmUtil.nvl(request.getParameter("title"));
@@ -145,7 +145,7 @@ public class NoticeController {
     }
 
     @RequestMapping(value = "noticeDetail")
-    public String noticeDetail(HttpServletRequest request, Model model) throws Exception{
+    public String noticeDetail(HttpServletRequest request, Model model) throws Exception {
         log.info(this.getClass().getName() + " .noticeDetail start !!");
         String notice_seq = CmmUtil.nvl(request.getParameter("no"));
 
@@ -163,5 +163,32 @@ public class NoticeController {
         log.info(this.getClass().getName() + " .NoticeDetail End !!");
 
         return "noticeDetail";
+    }
+
+    @GetMapping(value = "noticeDelete")
+    public String noticeDelete(HttpServletRequest request,Model model) throws Exception {
+        log.info(this.getClass().getName() + " .noticeDelete Start !!");
+        String notice_seq = CmmUtil.nvl(request.getParameter("no"));
+        log.info("notice_seq " + notice_seq);
+
+        NoticeDTO nDTO = new NoticeDTO();
+        nDTO.setNotice_seq(notice_seq);
+
+        int res = noticeService.noticeDelete(nDTO);
+        String msg;
+        String url;
+
+        if (res == 1) {
+            msg = "삭재 성공";
+            url = "getNoticeList";
+        }else{
+            msg = "삭제 실패";
+            url = "noticeDetail?no="+notice_seq;
+        }
+
+        model.addAttribute("msg", msg);
+        model.addAttribute("url", url);
+
+        return "redirect";
     }
 }

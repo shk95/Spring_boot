@@ -21,8 +21,13 @@
             </P>
         </div>
         <hr>
-        <div style="margin: auto; width: 800px;">
+        <div style="float: left;">
             <button onclick="location.href='getNoticeList'">뒤로</button>
+        </div>
+        <div style="float: left;">
+            <button onclick="location.href='noticeUpdate?no=<%=rDTO.getNotice_seq()%>'">수정</button>
+            <button onclick="location.href='noticeDelete?no=<%=rDTO.getNotice_seq()%>'">삭제</button>
+
         </div>
     </div>
 </body>

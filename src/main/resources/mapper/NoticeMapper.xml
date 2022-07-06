@@ -17,5 +17,8 @@
         from notice
         where NOTICE_SEQ = #{notice_seq}
     </select>
+    <delete id="noticeDelete" parameterType="NoticeDTO">
+            delete from notice
+            where notice_seq = #{notice_seq}
+    </delete>
 </mapper>
-
