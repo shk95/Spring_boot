@@ -19,10 +19,12 @@
             <td>게시자</td>
             <td>등록일</td>
         </tr>
-        <% for (int i = 0; i < rList.size(); i++) { %><tr>
+        <% for (int i = 0; i < rList.size(); i++) { %>
+        <tr>
             <td><%=rList.get(i).getNotice_seq()%>
             </td>
-            <td><%=rList.get(i).getTitle()%>
+            <td><a href="noticeDetail?no=<%=rList.get(i).getNotice_seq()%>"><%=rList.get(i).getTitle()%>
+            </a>
             </td>
             <td><%=rList.get(i).getReg_id()%>
             </td>

@@ -143,4 +143,25 @@ public class NoticeController {
 
         return "noticeList";
     }
+
+    @RequestMapping(value = "noticeDetail")
+    public String noticeDetail(HttpServletRequest request, Model model) throws Exception{
+        log.info(this.getClass().getName() + " .noticeDetail start !!");
+        String notice_seq = CmmUtil.nvl(request.getParameter("no"));
+
+        NoticeDTO pDTO = new NoticeDTO();
+        pDTO.setNotice_seq(notice_seq);
+
+        NoticeDTO rDTO = noticeService.getNoticeDetail(pDTO);
+        if (rDTO == null) {
+            model.addAttribute("msg", "존재하지 않는 게시물입니다.");
+            model.addAttribute("url", "getNoticeList");
+            return "redirect";
+        }
+
+        model.addAttribute("rDTO", rDTO);
+        log.info(this.getClass().getName() + " .NoticeDetail End !!");
+
+        return "noticeDetail";
+    }
 }

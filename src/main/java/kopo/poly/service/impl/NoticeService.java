@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.security.acl.NotOwnerException;
 import java.util.List;
 
 @Slf4j
@@ -35,5 +36,13 @@ public class NoticeService implements INoticeService {
         log.info(this.getClass().getName() + "InsertNoticeInfo end !");
 
         return rList;
+    }
+
+    @Override
+    public NoticeDTO getNoticeDetail(NoticeDTO pDTO) throws Exception{
+        log.info(this.getClass().getName() + "getNoticeDetail start !");
+        NoticeDTO rDTO = noticeMapper.getNoticeDetail(pDTO);
+        log.info(this.getClass().getName() + "getNoticeDetail start !");
+        return rDTO;
     }
 }
