@@ -16,9 +16,9 @@
         <hr>
         <div style="margin: auto; width: 800px;">작성자 : <%=CmmUtil.nvl(rDTO.getReg_id())%></div>
         <div>
-            <P>
+            <p>
                 <%=CmmUtil.nvl(rDTO.getContents())%>
-            </P>
+            </p>
         </div>
         <hr>
         <div style="float: left;">
