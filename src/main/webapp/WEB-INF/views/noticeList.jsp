@@ -31,6 +31,9 @@
         </tr>
         <% } %>
     </table>
+    <div style="width : 100%; text-align : right; margin-top : 5px">
+        <button type="button" onclick="location.href = 'noticeInfo'">새글</button>
+    </div>
 </div>
 </body>
 </html>
