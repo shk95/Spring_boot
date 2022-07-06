@@ -53,6 +53,14 @@
             <artifactId>tomcat-embed-jasper</artifactId>
             <scope>provided</scope>
         </dependency>
+        <!--error code [17056]; 지원되지 않는 문자 집합(클래스 경로에 orai18n.jar 추가): KO16MSWIN949;
+        nested exception is java.sql.SQLException: 지원되지 않는 문자 집합(클래스 경로에 orai18n.jar 추가)
+        해당 에러를 위한 파일 추가-->
+        <dependency>
+            <groupId>com.oracle.ojdbc</groupId>
+            <artifactId>orai18n</artifactId>
+            <version>19.3.0.0</version>
+        </dependency>
     </dependencies>
 
     <build>
