@@ -113,8 +113,26 @@ public class NoticeController {
     @RequestMapping(value = "getNoticeList")
     public String getNoticeList(HttpServletRequest request, Model model)throws Exception{
         log.info(this.getClass().getName() + " .getNoticeList Start !!");
+        /*String reg_id = CmmUtil.nvl(request.getParameter("reg_id"));
+        String title = CmmUtil.nvl(request.getParameter("title"));
+        String contents = CmmUtil.nvl(request.getParameter("contents"));
+
+        log.info("reg_id : " + reg_id);
+        log.info("title : " + reg_id);
+        log.info("content : " + reg_id);
+
+        NoticeDTO pDTO = new NoticeDTO();
+        pDTO.setTitle(title);
+        pDTO.setTitle(contents);
+        pDTO.setTitle(reg_id);
+
+        int res = noticeService.InsertNoticeInfo(pDTO)
+
+        String msg;
+        String url = "/getNoticeList";*/
 
         List<NoticeDTO> rList = noticeService.getNoticeList();
+
         log.info(String.valueOf(rList.size()));
         if (rList == null) {
             rList = new ArrayList<>();
@@ -123,6 +141,6 @@ public class NoticeController {
 
         log.info(this.getClass().getName() + " .getNoticeList End !!");
 
-        return "NoticeList";
+        return "noticeList";
     }
 }

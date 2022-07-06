@@ -4,14 +4,13 @@
 
 <mapper namespace="kopo.poly.persistance.mapper.INoticeMapper">
     <insert id="InsertNoticeInfo" parameterType="NoticeDTO">
-            insert into notice
-                (
-                    NOTICE_SEQ, TITLE, CONTENTS, REG_ID
-                )
-            values
-            (
-                NOTICE_SEQ.NEXTVAL,#{title},#{contents},#{reg_id}
-            )
+        insert into notice
+        (NOTICE_SEQ, TITLE, CONTENTS, REG_ID)
+        values (NOTICE_SEQ.NEXTVAL, #{title}, #{contents}, #{reg_id})
     </insert>
+    <select id="getNoticeList" resultType="NoticeDTO" parameterType="NoticeDTO">
+        select *
+        from notice
+    </select>
 </mapper>
 
