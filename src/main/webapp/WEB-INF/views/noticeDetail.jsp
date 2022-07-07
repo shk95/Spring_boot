@@ -12,11 +12,12 @@
 </head>
 <body>
     <div style="margin: auto; width: 800px;">
-        <h4><%=CmmUtil.nvl(rDTO.getTitle())%></h4>
+        <h4>제목 : <%=CmmUtil.nvl(rDTO.getTitle())%></h4>
         <hr>
         <div style="margin: auto; width: 800px;">작성자 : <%=CmmUtil.nvl(rDTO.getReg_id())%></div>
+        <hr>
         <div>
-            <p>
+            <p>내용 :
                 <%=CmmUtil.nvl(rDTO.getContents())%>
             </p>
         </div>
