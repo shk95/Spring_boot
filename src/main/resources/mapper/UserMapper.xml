@@ -3,5 +3,10 @@
 
 
 <mapper namespace="kopo.poly.persistance.mapper.IUserMapper">
+    <insert id="InsertUserInfo" parameterType="UserinfoDTO">
+        insert into userinfo
+        (user_seq,user_id,user_pwd,user_email,user_name)
+        values(user_seq.nextval,#{user_id},#{user_pwd},#{user_email},#{user_name})
+    </insert>
 
 </mapper>

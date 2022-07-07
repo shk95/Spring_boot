@@ -39,7 +39,7 @@ public class UserController {
     //회원가입하기
     @PostMapping(value = "doSignUp")
     public String doSignUp(HttpServletRequest request, Model model) throws Exception{
-        log.info(this.getClass().getName() + " .doSignUp Ends!");
+        log.info(this.getClass().getName() + " .doSignUp Starts!");
         String user_id = CmmUtil.nvl(request.getParameter("user_id"));
         String user_pwd = CmmUtil.nvl(request.getParameter("user_pwd"));
         String user_email = CmmUtil.nvl(request.getParameter("user_email"));
@@ -61,8 +61,18 @@ public class UserController {
         pDTO.setUser_email(user_email);
         pDTO.setUser_name(user_name);
 
-        int res = UserService.InsertUserInfo(pDTO);
+        int res = userService.InsertUserInfo(pDTO);
 
+        String msg;
+        String url = "/signUpPage";
+
+        if (res > 0) {
+            msg = "등록에 성공하셨습니다.";
+        } else {
+            msg = "등록에 실패하셨습니다";
+        }
+        model.addAttribute("msg", msg);
+        model.addAttribute("url", url);
 
 
         log.info(this.getClass().getName() + " .doSignUp Ends!");
