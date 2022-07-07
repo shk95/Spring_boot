@@ -3,9 +3,25 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>jsp 컨트롤러 등 실습</title>
+    <title>실습 홈페이지</title>
+    <style type="text/css">
+        * {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-<h1>index.jsp 파일</h1>
+<div>
+    <h1>로그인 페이지</h1>
+    <hr>
+    <form action="">
+        아이디 : <input name="user_id" type="text" size="10"/>
+        <br>
+        비밀번호 : <input name="user_pwd" type="password" size="10"/>
+        <br>
+        <input type="submit" id="" value="로그인">
+        <input type="button" onclick="location.href='goSignUpPage'" value="회원가입">
+    </form>
+</div>
 </body>
 </html>
