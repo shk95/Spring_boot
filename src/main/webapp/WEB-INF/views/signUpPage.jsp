@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <title></title>
     <style type="text/css">
-        *{
+        * {
             text-align: center;
         }
     </style>
@@ -18,21 +18,26 @@
     <div>
         <form action="/doSignUp" method="post">
             <div>
-                <label>이름</label>
+                이름 :
                 <input name="user_name" type="text"/>
             </div>
             <div>
-                <label>이메일</label>
+                이메일 :
                 <input name="user_email" type="email"/>
             </div>
             <div>
-                <label>아이디</label>
+                아이디 :
                 <input name="user_id" type="text"/>
             </div>
             <div>
-                <label>페스워드</label>
-                <input name="user_pwd" type="password"/>
+                패스워드 :
+                <input id="passwd_chk1" name="user_pwd" type="password"/>
             </div>
+            <div>
+                패스워드 확인 :
+                <input id="passwd_chk2" type="password"/>
+            </div>
+
             <button type="submit">전송</button>
             <button type="reset">지우기</button>
         </form>
