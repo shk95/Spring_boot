@@ -11,6 +11,7 @@
     <select id="getNoticeList" resultType="NoticeDTO" parameterType="NoticeDTO">
         select *
         from notice
+        order by notice_seq
     </select>
     <select id="getNoticeDetail" parameterType="NoticeDTO" resultType="NoticeDTO">
         select *
@@ -18,7 +19,14 @@
         where NOTICE_SEQ = #{notice_seq}
     </select>
     <delete id="noticeDelete" parameterType="NoticeDTO">
-            delete from notice
-            where notice_seq = #{notice_seq}
+        delete
+        from notice
+        where notice_seq = #{notice_seq}
     </delete>
+    <update id="noticeUpdate" parameterType="NoticeDTO">
+        update notice
+        set title=#{title},
+            contents=#{contents}
+        where NOTICE_SEQ = #{notice_seq}
+    </update>
 </mapper>

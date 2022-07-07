@@ -56,4 +56,16 @@ public class NoticeService implements INoticeService {
 
         return res;
     }
+
+    @Override
+    public int noticeUpdate(NoticeDTO nDTO) throws Exception {
+        log.info(this.getClass().getName() + "noticeUpdate Starts !");
+
+        int res = noticeMapper.noticeUpdate(nDTO);
+        log.info("res : " + res);
+
+        log.info(this.getClass().getName() + "noticeUpdate Ends !");
+
+        return res;
+    }
 }

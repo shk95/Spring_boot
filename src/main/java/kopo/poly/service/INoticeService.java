@@ -12,4 +12,6 @@ public interface INoticeService {
     NoticeDTO getNoticeDetail(NoticeDTO pDTO) throws Exception;
 
     int noticeDelete(NoticeDTO nDTO) throws Exception;
+
+    int noticeUpdate(NoticeDTO nDTO) throws Exception;
 }

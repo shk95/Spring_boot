@@ -1,5 +1,6 @@
 package kopo.poly.controller;
 
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import kopo.poly.dto.NoticeDTO;
 import kopo.poly.service.INoticeService;
 import kopo.poly.util.CmmUtil;
@@ -166,7 +167,7 @@ public class NoticeController {
     }
 
     @GetMapping(value = "noticeDelete")
-    public String noticeDelete(HttpServletRequest request,Model model) throws Exception {
+    public String noticeDelete(HttpServletRequest request, Model model) throws Exception {
         log.info(this.getClass().getName() + " .noticeDelete Start !!");
         String notice_seq = CmmUtil.nvl(request.getParameter("no"));
         log.info("notice_seq " + notice_seq);
@@ -181,13 +182,62 @@ public class NoticeController {
         if (res == 1) {
             msg = "삭재 성공";
             url = "getNoticeList";
-        }else{
+        } else {
             msg = "삭제 실패";
-            url = "noticeDetail?no="+notice_seq;
+            url = "noticeDetail?no=" + notice_seq;
         }
 
         model.addAttribute("msg", msg);
         model.addAttribute("url", url);
+
+        return "redirect";
+    }
+
+    @GetMapping(value = "noticeUpdate")
+    public String noticeUpdate(HttpServletRequest request, Model model) throws Exception {
+        log.info(this.getClass().getName() + " .noticeUpdate Starts !!");
+        String notice_seq = CmmUtil.nvl(request.getParameter("no"));
+        log.info("notice_seq : " + notice_seq);
+        log.info("notice_seq model: " + model);
+
+        model.addAttribute("notice_seq", notice_seq);
+
+
+        log.info(this.getClass().getName() + " .noticeUpdate Ends !!");
+        return "editForm";
+    }
+
+    @GetMapping(value = "doNoticeUpdate")
+    public String doNoticeUpdate(HttpServletRequest request, Model model) throws Exception {
+        log.info(this.getClass().getName() + " .doNoticeUpdate Starts !!");
+        String title = request.getParameter("title");
+        String contents = request.getParameter("contents");
+        String notice_seq = request.getParameter("notice_seq");
+
+        log.info("title : " + title);
+        log.info("contents : " + contents);
+        log.info("notice_seq : " + notice_seq);
+
+        NoticeDTO nDTO = new NoticeDTO();
+        nDTO.setNotice_seq(notice_seq);
+        nDTO.setTitle(title);
+        nDTO.setContents(contents);
+
+        int res = noticeService.noticeUpdate(nDTO);
+
+        String msg;
+        String url;
+        if (res > 0) {
+            msg = "수정성공";
+            url = "getNoticeList";
+        } else {
+            msg = "수정실패";
+            url = "getNoticeList";
+        }
+        model.addAttribute("msg", msg);
+        model.addAttribute("url", url);
+
+        log.info(this.getClass().getName() + " .doNoticeUpdate Ends !!");
 
         return "redirect";
     }
