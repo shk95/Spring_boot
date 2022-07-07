@@ -202,9 +202,14 @@ public class NoticeController {
 
         model.addAttribute("notice_seq", notice_seq);
 
+        NoticeDTO pDTO = new NoticeDTO();
+        pDTO.setNotice_seq(notice_seq);
+
+        NoticeDTO rDTO = noticeService.getNoticeDetail(pDTO);
+        model.addAttribute("rDTO", rDTO);
 
         log.info(this.getClass().getName() + " .noticeUpdate Ends !!");
-        return "editForm";
+        return "editForm_1";
     }
 
     @GetMapping(value = "doNoticeUpdate")
